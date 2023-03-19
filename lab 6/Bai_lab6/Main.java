@@ -7,7 +7,7 @@ public class Main {
 		p1.xuatThongTin();
 		p1.tinhLuong();
 
-		NhanVien p2 = new NhanVienFullTime("Nguyen Van B ", " Giam Doc", 45);
+		NhanVien p2 = new NhanVienFullTime("Nguyen Van B ", " Giam Doc", 10);
 		p2.xuatThongTin();
 		p2.tinhLuong();
 	}

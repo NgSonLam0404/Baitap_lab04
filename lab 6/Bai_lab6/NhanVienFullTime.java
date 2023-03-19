@@ -25,6 +25,7 @@ public class NhanVienFullTime extends NhanVien {
 
 	@Override
 	public void tinhLuong() {
-		System.out.println("luong la");
+		int luong= 2500000+100000*this.ngayLamThem;
+		System.out.println("luong la"+luong);
 	}
 }

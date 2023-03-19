@@ -20,7 +20,7 @@ public class NhanVien {
 	}
 
 	public void xuatThongTin() {
-		System.out.println(loaiNhanVien() + this.ten + this);
+		System.out.println(loaiNhanVien() + this.ten);
 	}
 
 }
