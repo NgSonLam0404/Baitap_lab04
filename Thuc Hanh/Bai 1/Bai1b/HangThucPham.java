@@ -59,7 +59,7 @@ public class HangThucPham {
 		return ngayHetHan;
 	}
 
-	// Constructor có đầy đủ tham số
+	
 	public HangThucPham(String maHang, String tenHang, double donGia, LocalDate ngaySanXuat, LocalDate ngayHetHan) {
 		if (maHang != null && !maHang.equals("")) {
 			this.maHang = maHang;
@@ -82,7 +82,7 @@ public class HangThucPham {
 		this.ngayHetHan = ngayHetHan;
 	}
 
-	// Constructor có tham số là mã hàng
+	
 	public HangThucPham(String maHang) {
 		this.maHang = maHang;
 	}
@@ -107,10 +107,13 @@ public class HangThucPham {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 		return String.format("| %-15s | %-25s | %-15s | %-20s | %-20s | %-10s |%n", "Ma hang", "Ten hang", "Don gia",
-			    "Ngay san xuat", "Ngay het han", "Ghi Chu") +"\n"
-				+"================================================================================================================================"+ "\n" +
-			    String.format("| %-15s | %-25s | %-15s | %-20s | %-20s | %-10s |%n", maHang, tenHang, dongia,
-			        ngaySanXuat.format(formatter), ngayHetHan.format(formatter), hethan);
+                "Ngay san xuat", "Ngay het han", "Ghi Chu") + 
+        "================================================================================================================================"+ "\n" +
+        String.format("| %-15s | %-25s | %-15s | %-20s | %-20s | %-10s |%n", maHang, tenHang, dongia,
+                ngaySanXuat.format(formatter), ngayHetHan.format(formatter), hethan)
+        .replaceFirst("\\|", " ").replaceFirst("\\|", " ").replaceFirst("\\|", " ").replaceFirst("\\|", " ")
+        .replaceFirst("\\|", " ").replaceFirst("\\|", " ");
+
 
 		}
 }

@@ -2,6 +2,7 @@ package Bai1b;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,7 +21,7 @@ public class HangThucPhamArraylist {
             System.out.print("Nhap ma hang: ");
             maHang = sc.nextLine();
 
-            // Kiểm tra xem mã hàng đã tồn tại trong danh sách hay chưa
+            
             trungMaHang = false;
             for (HangThucPham htp : dsHang) {
                 if (htp.getMaHang().equals(maHang)) {
@@ -37,13 +38,35 @@ public class HangThucPhamArraylist {
         System.out.print("Nhap don gia: ");
         double donGia = sc.nextDouble();
 
-        System.out.print("Nhap ngay san xuat (dd/mm/yyyy): ");
-        String ngaySanXuatStr = sc.next();
-        LocalDate ngaySanXuat = LocalDate.parse(ngaySanXuatStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        boolean validNgaySanXuat = false;
+        LocalDate ngaySanXuat = null;
+        while (!validNgaySanXuat) {
+            System.out.print("Nhap ngay san xuat (dd/mm/yyyy): ");
+            String ngaySanXuatStr = sc.next();
+            try {
+                ngaySanXuat = LocalDate.parse(ngaySanXuatStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                validNgaySanXuat = true;
+            } catch (DateTimeParseException e) {
+                System.out.println("Ngay san xuat khong dung dinh dang, vui long nhap lai!");
+            }
+        }
 
-        System.out.print("Nhap ngay het han (dd/mm/yyyy): ");
-        String ngayHetHanStr = sc.next();
-        LocalDate ngayHetHan = LocalDate.parse(ngayHetHanStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        boolean validNgayHetHan = false;
+        LocalDate ngayHetHan = null;
+        while (!validNgayHetHan) {
+            System.out.print("Nhap ngay het han (dd/mm/yyyy): ");
+            String ngayHetHanStr = sc.next();
+            try {
+                ngayHetHan = LocalDate.parse(ngayHetHanStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if (ngayHetHan.isBefore(ngaySanXuat)) {
+                    System.out.println("Ngay het han phai sau ngay san xuat, vui long nhap lai!");
+                } else {
+                    validNgayHetHan = true;
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("Ngay het han khong dung dinh dang, vui long nhap lai!");
+            }
+        }
 
         HangThucPham htp = new HangThucPham(maHang, tenHang, donGia, ngaySanXuat, ngayHetHan);
         dsHang.add(htp);
