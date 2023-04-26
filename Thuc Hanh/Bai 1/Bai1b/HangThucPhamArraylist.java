@@ -21,7 +21,7 @@ public class HangThucPhamArraylist {
             System.out.print("Nhap ma hang: ");
             maHang = sc.nextLine();
 
-            
+            // Kiểm tra xem mã hàng đã tồn tại trong danh sách hay chưa
             trungMaHang = false;
             for (HangThucPham htp : dsHang) {
                 if (htp.getMaHang().equals(maHang)) {
@@ -79,7 +79,9 @@ public class HangThucPhamArraylist {
         if (dsHang.isEmpty()) {
             System.out.println("Danh sach hang rong!");
         } else {
-            System.out.println("Danh sach hang:");
+        	 System.out.println( String.format("| %-15s | %-25s | %-15s | %-20s | %-20s | %-10s |%n", "Ma hang", "Ten hang", "Don gia",
+                     "Ngay san xuat", "Ngay het han", "Ghi Chu") + 
+                     "================================================================================================================================"+ "\n");
             for (HangThucPham htp : dsHang) {
                 System.out.println(htp);
             }

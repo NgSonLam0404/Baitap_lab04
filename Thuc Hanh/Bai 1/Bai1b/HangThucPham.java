@@ -106,9 +106,7 @@ public class HangThucPham {
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-		return String.format("| %-15s | %-25s | %-15s | %-20s | %-20s | %-10s |%n", "Ma hang", "Ten hang", "Don gia",
-                "Ngay san xuat", "Ngay het han", "Ghi Chu") + 
-        "================================================================================================================================"+ "\n" +
+		return 
         String.format("| %-15s | %-25s | %-15s | %-20s | %-20s | %-10s |%n", maHang, tenHang, dongia,
                 ngaySanXuat.format(formatter), ngayHetHan.format(formatter), hethan)
         .replaceFirst("\\|", " ").replaceFirst("\\|", " ").replaceFirst("\\|", " ").replaceFirst("\\|", " ")
